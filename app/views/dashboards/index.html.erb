@@ -5,24 +5,26 @@
       <% if @dashboards.present? %>
         <h2>Your Dashboards</h2>
         <br>
-        <% @dashboards.each do |dashboard| %>
-          <div class="card">
-            <h5 class="card-header"><%=dashboard.headline%></h5>
-            <div class="card-body">
-              <p class="card-text"><%=dashboard.content%></p>
+        <div id="dashboards" class="list-group" data-url="<%= sort_dashboards_path %>">
+          <% @dashboards.each do |dashboard| %>
+            <div class="card mt-4", id= "<%=dom_id(dashboard) %>">
+              <h5 class="card-header"><%=dashboard.headline%></h5>
+              <div class="card-body">
+                <p class="card-text"><%=dashboard.content%></p>
+              </div>
             </div>
-          </div>
-          <br>
-        <% end %>
+          <% end %>
+        </div>
       <% else %>
         <h5>You don't have any Dashboards yet. Click 'New'
          in navigation menu to create one.</h5>
       <% end %>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-1"></div>
+    <div class="col-md-4">
       <br>
       <br>
-      <strong>Use <i>drag&drop</i> to reorder dashboards. Position will be saved to db.</strong>
+      <strong>You will be able to use <i>drag&drop</i> to reorder dashboards. Position will be saved to db.</strong>
     </div>
   </div>
 </div>

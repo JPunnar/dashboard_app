@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
+require("jquery-ui")
 import 'bootstrap'
 
 
@@ -16,3 +18,16 @@ import 'bootstrap'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+document.addEventListener("turbolinks:load", function() {
+  $("#dashboards").sortable({
+    update: function(e, ui) {
+      console.log($(this).sortable('serialize'));
+      $.ajax({
+        url: $(this).data('url'),
+        type: 'PATCH',
+        data: $(this).sortable('serialize')
+      });
+    }
+  });
+});

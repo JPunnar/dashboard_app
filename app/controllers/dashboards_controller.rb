@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @dashboards = current_user.dashboards
+    @dashboards = current_user.dashboards.order(:position)
   end
 
   def new
@@ -14,6 +14,13 @@ class DashboardsController < ApplicationController
   def create
     current_user.dashboards.create(dashboard_params)
     redirect_to root_path
+  end
+
+  def sort
+    params[:dashboard].each_with_index do |id, index|
+      current_user.dashboards.find_by(id: id).update_attribute(:position, index + 1)
+    end
+    head :ok
   end
 
   private
