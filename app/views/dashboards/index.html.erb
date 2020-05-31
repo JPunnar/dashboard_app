@@ -1,0 +1,28 @@
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-7">
+      <% if @dashboards.present? %>
+        <h2>Your Dashboards</h2>
+        <br>
+        <% @dashboards.each do |dashboard| %>
+          <div class="card">
+            <h5 class="card-header"><%=dashboard.headline%></h5>
+            <div class="card-body">
+              <p class="card-text"><%=dashboard.content%></p>
+            </div>
+          </div>
+          <br>
+        <% end %>
+      <% else %>
+        <h5>You don't have any Dashboards yet. Click 'New'
+         in navigation menu to create one.</h5>
+      <% end %>
+    </div>
+    <div class="col-md-5">
+      <br>
+      <br>
+      <strong>Use <i>drag&drop</i> to reorder dashboards. Position will be saved to db.</strong>
+    </div>
+  </div>
+</div>

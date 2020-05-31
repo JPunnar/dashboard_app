@@ -1,0 +1,24 @@
+<%= link_to "Back", root_path, class: 'btn bg-light' %>
+<br>
+<br>
+<h4>New dashboard</h4>
+<br>
+<%= form_for @dashboard do |f| %>
+  <% if f.object.errors.any? %>
+    <ul class="alert alert-danger">
+      <% f.object.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="form-group">
+    <%= f.label "Headline*" %>
+    <%= f.text_field :headline, class: "form-control", required: true %>
+    <br>
+    <%= f.label "Content" %>
+    <%= f.text_field :content, class: "form-control" %>
+
+    <br>
+    <%= f.submit "Submit", class: "btn bg-secondary" %>
+  </div>
+<% end %>

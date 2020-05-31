@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-content" aria-controls="nav-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <%= link_to "Dashboard", root_path, class: 'navbar-brand' %>
+  
+  <div class="collapse navbar-collapse" id="nav-content">
+  <ul class="navbar-nav">
+    <% if current_user.present? %>
+      <li class="nav-item <%= 'active' if action_name == 'new' %>">
+        <%= link_to 'New', new_dashboard_path, class: 'nav-link' %>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if current_user.present? %>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <div class="navbar-text">
+          <%= current_user.email %>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+    </ul>
+  <% end %>
+</nav>
+<br>
