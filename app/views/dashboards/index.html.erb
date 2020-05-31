@@ -11,6 +11,7 @@
               <h5 class="card-header"><%=dashboard.headline%></h5>
               <div class="card-body">
                 <p class="card-text"><%=dashboard.content%></p>
+                <span class="float-right"><%= link_to "Edit", edit_dashboard_path(dashboard), class: 'btn bg-secondary' %></span>
               </div>
             </div>
           <% end %>

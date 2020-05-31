@@ -13,6 +13,17 @@ class DashboardsController < ApplicationController
 
   def create
     current_user.dashboards.create(dashboard_params)
+    flash[:notice] = 'Dashboard created!'
+    redirect_to root_path
+  end
+
+  def edit
+    @dashboard = Dashboard.find(params[:id])
+  end
+
+  def update
+    Dashboard.find(params[:id]).update(dashboard_params)
+    flash[:notice] = 'Dashboard updated!'
     redirect_to root_path
   end
 
