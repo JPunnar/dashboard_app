@@ -22,7 +22,7 @@ class DashboardsController < ApplicationController
   end
 
   def update
-    Dashboard.find(params[:id]).update(dashboard_params)
+    current_user.dashboards.find(params[:id]).update(dashboard_params)
     flash[:notice] = 'Dashboard updated!'
     redirect_to root_path
   end
